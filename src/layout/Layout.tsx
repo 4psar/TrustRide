@@ -6,7 +6,6 @@ import BottomBar from "../navigations/BottomBar";
 import { Home } from "../screens/User/Home";
 import { Profile } from "../screens/User/Profile";
 import { ROLE_BASED_NAVIGATION, TrustRideUserRole } from "../constants/navConfig";
-import { SignUp } from "../screens/SignUp";
 
 export const Layout = () => {
   const insets = useSafeAreaInsets();
