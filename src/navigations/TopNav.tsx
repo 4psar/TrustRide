@@ -6,7 +6,7 @@ export default function TopNav() {
   return (
     <View style={styles.container}>
       <View style={styles.leftSection}>
-        <Image style={styles.logo} source={require('../assets/images/logo.jpeg')} />
+        <Image style={styles.logo} source={require('../assets/images/logo.png')} />
 
         <View style={styles.textContainer}>
           <Text style={styles.appName}>TrustRide</Text>

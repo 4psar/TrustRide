@@ -1,34 +1,35 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-import React from 'react';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
-import { Text } from 'react-native';
-import DashboardScreen from './src/screen/home'; 
+import React, { useContext, useState } from "react";
+import { StatusBar, StyleSheet, useColorScheme } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import {Layout} from "./src/layout/Layout";
+import  SignUp  from "./src/screens/SignUp";
+import { NavigationContainer } from "@react-navigation/native";
+import { AuthContext, AuthProvider } from "./src/context/AuthContext";
 
+function Root() {
+  const { isAuthenticated } = useContext(AuthContext);
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+  return isAuthenticated ? <Layout /> : <SignUp />;
+}
+
+export default function App() {
+  const isDarkMode = useColorScheme() === "dark";
 
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <DashboardScreen/>
+      <AuthProvider>
+        <NavigationContainer>
+          <StatusBar backgroundColor={isDarkMode ? '#121212' : '#FEBF00'}
+            barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+          <Root/>
+        </NavigationContainer>
+      </AuthProvider>
     </SafeAreaProvider>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
-
-export default App;
+  statusbar:{
+    backgroundColor:'yellow'
+  }
+})
