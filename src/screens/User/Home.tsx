@@ -2,22 +2,9 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-export default function DashboardScreen() {
+export const Home = ()=> {
   return (
     <ScrollView style={styles.container}>
-      {/* Header */}
-      <SafeAreaView style={{ backgroundColor: 'yellow' }}>
-        <View style={styles.titleView}>
-          <Image style={styles.logo} source={require('../assets/images/logo.jpeg')} />
-
-          <View style={styles.textContainer}>
-            <Text style={styles.appName}>TrustRide</Text>
-            <Text style={styles.tagline}>Your Journey, Our Responsibility.</Text>
-          </View>
-        </View>
-      </SafeAreaView>
-
-      {/* Metrics Section */}
       <View style={styles.metricsCard}>
         <View style={styles.metricRow}>
           <View style={styles.metricBox}>
@@ -102,38 +89,9 @@ function ActionButton({ title }: { title: string }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    padding:0,
+    margin:0,
     backgroundColor: '#F7F7F7'
-  },
-
-  titleView: {
-    flexDirection: 'row',
-    backgroundColor: 'yellow',
-    width: '100%',
-    paddingVertical: 8,
-    alignItems: 'center',
-    paddingHorizontal: 10,
-  },
-
-  logo: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    marginRight: 10,
-  },
-
-  textContainer: {
-    flexDirection: 'column',
-  },
-
-  appName: {
-    fontSize: 22,
-    fontWeight: '700',
-  },
-
-  tagline: {
-    fontSize: 14,
-    color: '#555',
   },
 
   metricsCard: {
