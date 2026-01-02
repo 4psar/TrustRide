@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import TopNav from "../navigations/TopNav";
@@ -11,11 +11,43 @@ import { RidesList } from "../screens/Driver/RidesList";
 import DriverEarningsScreen from "../screens/Driver/DriverEarningsScreen";
 import { DriverProfile } from "../screens/Driver/DriverProfile";
 import { createNativeStackNavigator  } from '@react-navigation/native-stack';
+import { getUserFromSession } from "../hooks/useSession";
+
+interface RoleProps{
+  id:number;
+  name:string;
+}
 
 export const Layout = () => {
   const insets = useSafeAreaInsets();
+  const [user, setUser] = useState<any>({});
+  
+  const Role:RoleProps[] = [
+    {
+      id:1,
+      name:'Customer'
+    },{
+      id:2,
+      name:'Driver'
+    },
+    {id:3,
+      name:'Admin'
+    },{
+      id:0,
+      name: 'Guest'
+    }
+  ];
 
-  const userRole: TrustRideUserRole = "Driver";
+  useEffect(()=>{
+    const fetchUser =async()=>{
+      const user = await getUserFromSession();
+      setUser(user);
+    }
+
+    fetchUser();
+  },[])
+
+  const userRole: TrustRideUserRole = Role.find((r:any)=> r.id == user.roleId)?.name as TrustRideUserRole || "Guest";
   const navItems = ROLE_BASED_NAVIGATION[userRole].navItems;
 
   const [screen, setScreen] = useState(navItems[0].path); 

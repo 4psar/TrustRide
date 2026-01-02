@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const getUserFromSession = async () => {
-    const user = await AsyncStorage.getItem('userProfile');
+    const user = await AsyncStorage.getItem('userData');
     return user ? JSON.parse(user) : null;
 };
 
