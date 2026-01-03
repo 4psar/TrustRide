@@ -12,6 +12,14 @@ import DriverEarningsScreen from "../screens/Driver/DriverEarningsScreen";
 import { DriverProfile } from "../screens/Driver/DriverProfile";
 import { createNativeStackNavigator  } from '@react-navigation/native-stack';
 import { getUserFromSession } from "../hooks/useSession";
+import { UserRidesList } from "../screens/User/userRideList";
+import { UserProfileSettings  } from "../screens/User/userSetting";
+import {BookRide} from "../screens/User/bookRide";
+import {AdminridesList} from"../screens/Admin/rideList"
+import {AdminProfileSettings} from"../screens/Admin/adminSetting"
+import {DashboardScreen} from "../screens/Admin/adminDashboard"
+import {FleetManagementScreen} from "../screens/Admin/user"
+
 
 interface RoleProps{
   id:number;
@@ -67,10 +75,8 @@ export const Layout = () => {
   const renderScreen = () => {
     console.log('this is screen', screen)
     switch (screen) {
-      case "/user-dashboard":
-        return <Home />;
-
-      case "/settings":
+      
+      case "/settings": //Driver
         return <Profile />;
 
       case "/driver-dashboard":
@@ -85,6 +91,29 @@ export const Layout = () => {
       case "/account":
         return <AccountStack/>;
          
+       case "/dashboard": // Admin
+        return <DashboardScreen />;  
+
+      case "/users": 
+        return <FleetManagementScreen />;
+
+      case "/settings":
+        return <AdminProfileSettings />;
+
+      case "/analytics": 
+        return <AdminridesList />;
+  
+      case "/user-settings": //User
+        return <UserProfileSettings />;
+
+      case "/ride-history":
+        return <RidesList/>; 
+        
+      case "/book-ride":
+        return <BookRide/>  
+
+      case "/user-dashboard":
+        return <Home />;
 
       default:
         return <Home />;

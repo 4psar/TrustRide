@@ -208,7 +208,7 @@ const EmptyState = ({ type }: { type: TabType }) => {
   )
 }
 
-export const RidesList = () => {
+export const UserRidesList = () => {
   const [activeTab, setActiveTab] = useState<TabType>('ongoing')
   const [refreshing, setRefreshing] = useState(false)
 
