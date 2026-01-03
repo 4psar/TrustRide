@@ -27,7 +27,7 @@ export const ROLE_BASED_NAVIGATION: Record<
       { path: "/user-dashboard", label: "Dashboard", icon: "home" },
       { path: "/book-ride", label: "Book Ride", icon: "list" },
       { path: "/ride-history", label: "Ride History", icon: "history" },
-      { path: "/settings", label: "Settings", icon: "settings" },
+      { path: "/user-settings", label: "Settings", icon: "settings" },
     ],
   },
 
